@@ -1,65 +1,41 @@
-const express = require('express');
+const router = require('express').Router();
+const multer = require('multer');
+const { Animal } = require('../db/models');
 
-const router = express.Router();
-// const {  } = require('../db/models');
 
-//===============================================================================================================================================================
-// ОТРИСОВКА ЖИВОТНЫХ
-//animal/
-router.get('/', async(req, res) => {
-   
-   // const allAminals = await Animal.findAll();
-   res.render('animal')
+const upload = multer({ dest:"public/images/"});
+
+
+//animal
+router.get('/', async (req, res) => {
+const animal = await Animal.findAll()
+
+   res.render('animal',{animal})
 })
 
-//===============================================================================================================================================================
 
-//ДОБАВЛЕНИЕ ЖИВОТНЫХ
-//animal/add
-router.post('/add', async(req, res) => {
-   
-   const user_id = req.session.user_id;
-   const {name, img, user_id} = req.body;
+
+//animal
+//ручка для добавления животного
+router.post('/', upload.single('img'), async (req, res) => {
+   const {id} = req.session.user_id
+   const img = req.file.path.split('/').slice(1).join('/');
    try {
-      const newAnimal = await Animal.create({})
-      res.json(newAnimal);//ПЕРЕДАЧА НА ФРОНТ ДАННЫХ
+      const createAnimal = await Animal.create({
+         img,
+         title,
+         description,
+         user_id: id
+       })
+      //  res.sendStatus(200)
+       res.json(createAnimal);
    } catch (error) {
       console.log(error);
-      res.sendStatus(555)
+      res.sendStatus(500);
    }
-  
-})
-//===============================================================================================================================================================
-
-
-
-
-
-//РЕДАКТИРОВАНИЕ
-router.get('/animal/:id', async (req, res) => {
-   const {id} = req.params
-   const getId = await Animal.FindOne({where: {Айди поста: равен id(reqparams)}})
-   res.render('')
-
+ 
 })
 
-
-
-//РЕДАКТИРОВАНИЕ
-//animal/:id
-router.put('/animal:/id', async (req, res) => {
-
-  const {name, img} = req.body;
-  const {id} = req.params;
-  try {
-   const animalUpdate = await Animal.update({})
-   res.json(animalUpdate)
-  } catch (error) {
-     console.log(error);
-  }
-  
-
-})
 //===============================================================================================================================================================
 //УДАЛЕНИЕ
 
@@ -70,9 +46,29 @@ router.delete('/animal/:id', async (req, res) => {
       await Animal.destroy({where: {id}})
       res.sendStatus(200);
    } catch (error) {
-      res.sendStatus(555)
+      console.log(error);
+      res.sendStatus(500)
    }
 
+})
+
+// //===============================================================================================================================================================
+
+// // //РЕДАКТИРОВАНИЕ
+//animal/:id
+router.put('/animal/:id', upload.single('img'),async (req, res) => {
+
+   const {id} = req.params;
+   const img = req.file.path.split('/').slice(1).join('/');
+   const {title, description} = req.body;
+   try {
+   const animalUpdate = await Animal.update({img,title, description},{where: {id:id}})
+      res.json(animalUpdate)
+   } catch (error) {
+      console.log(error);
+      res.sendStatus(500)
+   }
+  
 
 })
 

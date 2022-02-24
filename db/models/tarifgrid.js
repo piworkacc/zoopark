@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.PeopleTypes, { foreignKey: 'peopleType_id' });
-      this.belongsTo(models.DayTypes, { foreignKey: 'dayType_id'})
+      this.belongsTo(models.PeopleType, { foreignKey: 'peopleType_id' });
+      this.belongsTo(models.DayType, { foreignKey: 'dayType_id'})
     }
   }
   TarifGrid.init({
