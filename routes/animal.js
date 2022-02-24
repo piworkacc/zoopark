@@ -15,10 +15,10 @@ const animal = await Animal.findAll()
 
 
 
-//animal
-//ручка для добавления животного
+//ДОБАВЛЕНИЕ ручка для добавления животного
+//animal/
 router.post('/', upload.single('img'), async (req, res) => {
-   const {id} = req.session.user_id
+   const {id} = req.session.userId
    const img = req.file.path.split('/').slice(1).join('/');
    try {
       const createAnimal = await Animal.create({
@@ -36,10 +36,11 @@ router.post('/', upload.single('img'), async (req, res) => {
  
 })
 
-//===============================================================================================================================================================
 //УДАЛЕНИЕ
+//animal/
+//===============================================================================================================================================================
+router.delete('/animal/:id', (req, res) => {
 
-router.delete('/animal/:id', async (req, res) => {
 
    const {id} = req.params;
    try {
@@ -70,7 +71,7 @@ router.put('/animal/:id', upload.single('img'),async (req, res) => {
    }
   
 
-})
+
 
 
 
