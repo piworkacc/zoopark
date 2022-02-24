@@ -12,7 +12,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const animalRouter = require('./routes/animal');
 
-const{ addToLocals } = require('./middleware/allMiddleware')
+// const{ addToLocals } = require('./middleware/allMiddleware')
 
 const app = express();
 
