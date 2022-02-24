@@ -39,7 +39,7 @@ router.post('/', upload.single('img'), async (req, res) => {
 //УДАЛЕНИЕ
 //animal/
 //===============================================================================================================================================================
-router.delete('/animal/:id', (req, res) => {
+router.delete('/animal/:id', async(req, res) => {
 
 
    const {id} = req.params;
@@ -57,6 +57,7 @@ router.delete('/animal/:id', (req, res) => {
 
 // // //РЕДАКТИРОВАНИЕ
 //animal/:id
+
 router.put('/animal/:id', upload.single('img'),async (req, res) => {
 
    const {id} = req.params;
@@ -70,8 +71,7 @@ router.put('/animal/:id', upload.single('img'),async (req, res) => {
       res.sendStatus(500)
    }
   
-
-
+})
 
 
 
