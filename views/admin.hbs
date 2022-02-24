@@ -1,0 +1,85 @@
+<script src="/js/admin.js"></script>
+
+<div class="container-sm">
+  <table class="table table-hover table-bordered border-dark" id="childTable">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Категория людей</th>
+        <th scope="col">Тип дня</th>
+        <th scope="col">С даты</th>
+        <th scope="col">Тариф</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th scope="row">#</th>
+        <td class="col">
+
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </div>
+
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </div>
+        </td>
+        <td class="col-sm-2">
+          <input type="date" name="date" class="form-control" />
+        </td>
+        <td class="col-sm-2">
+          <input type="number" name="value" class="form-control" />
+        </td>
+        <td>
+          <input type="button" class="btn btn-outline-success btn-sm" id="addrow" onclick="childrenRow()"
+            value="Добавить" />
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tarifGrid}}
+      <tr id="tbl{{id}}">
+        <th scope="row">{{id}}</th>
+        <td>
+          <input type="text" name="PeopleType.name" class="form-control" value="{{'PeopleType.name'}}" />
+        </td>
+        <td>
+          <input type="text" name="DayType.name" class="form-control" value="{{'DayType.name'}}" />
+        </td>
+        <td>{{date}}</td>
+        <td>
+          <input type="number" name="value" class="form-control" value="{{value}}" />
+        </td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <input type=" button" class="btn btn-outline-warning btn-sm" id="addrow" onclick="changeRow('tbl{{id}}')"
+              value="Изменить" />
+            <input type=" button" class="btn btn-outline-danger btn-sm" id="addrow" onclick="deleteRow('tbl{{id}}')"
+              value="Удалить" />
+          </div>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
