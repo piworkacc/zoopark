@@ -16,15 +16,20 @@ a:hover {
   text-decoration: none;
 }
 
-img {
-  width: 1000px;
-  min-height: 600px;
-  box-sizing: border-box;
+
+.car-pic {
+  border: 1px solid #000000;
+  height: 800px;
   object-fit: cover;
 }
 
+.carousel-inner {
+  width: 100%;
+  height: 800px;
+}
+
 .carousel-item {
-  animation: carousel 6s linear infinite;
+  animation: carouseler 5s ease infinite;
 }
 
 .navbar-nav {
@@ -33,6 +38,7 @@ img {
 
 .carousel {
   max-width: 1280px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -46,7 +52,7 @@ img {
   z-index: 9999;
 }
 
-@keyframes carousel {
+@keyframes carouseler {
   from {
     transform: scale(1);
   }
@@ -56,7 +62,6 @@ img {
 }
 
 .welcome {
-  background-color: #fff;
 }
 .welcome__title {
   font-family: "Helvetica Neue",sans-serif;
@@ -64,7 +69,10 @@ img {
   font-size: 54px;
   line-height: 70px;
   font-weight: 900;
-  color: #000;
+  background-color: #f2b31e;
+  border: 1px solid #000;
+  border-radius: 20px;
+  transform: skew(-5deg);
   text-align: center;
 }
 
