@@ -56,7 +56,10 @@ function childrenRow() {
   const cell6 = row.insertCell(5);
 
   cell1.outerHTML = `<th> ${x}</th>`;
-  cell2.innerHTML = ' <input type="text" name="PeopleType.name" class="form-control" />';
+  cell2.innerHTML = `<input type="text" 
+    name="PeopleType.name" 
+    class="form-control" 
+    value="${document.getElementById('inputCategory').value}"/>`;
   cell3.innerHTML = ' <input type="text" name="DayType.name" class="form-control" />';
   cell4.innerHTML = ' <input type="date" name="date" class="form-control" />';
   cell5.innerHTML = ' <input type="number" name="value" class="form-control" />';
@@ -64,7 +67,7 @@ function childrenRow() {
 }
 
 function getButtonsGroupHtml(id) {
-  return `<div class="btn-group" role="group" aria-label="Basic example">
+  return `<div class="btn-group btn-group-sm" aria-label="Basic example">
     <input type=" button" class="btn btn-outline-warning btn-sm" id="addrow" onclick="changeRow('tbl${id}')"
       value="Изменить" />
     <input type=" button" class="btn btn-outline-danger btn-sm" id="addrow" onclick="deleteRow('tbl${id}')"
