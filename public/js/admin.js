@@ -60,9 +60,9 @@ function childrenRow() {
     name="PeopleType.name" 
     class="form-control" 
     value="${document.getElementById('inputCategory').value}"/>`;
-  cell3.innerHTML = ' <input type="text" name="DayType.name" class="form-control" />';
-  cell4.innerHTML = ' <input type="date" name="date" class="form-control" />';
-  cell5.innerHTML = ' <input type="number" name="value" class="form-control" />';
+  cell3.innerHTML = getInputsTextGroupHtml();
+  cell4.innerHTML = getInputsDateGroupHtml();
+  cell5.innerHTML = getInputsNumberGroupHtml();
   cell6.innerHTML = getButtonsGroupHtml(x);
 }
 
@@ -73,4 +73,22 @@ function getButtonsGroupHtml(id) {
     <input type=" button" class="btn btn-outline-danger btn-sm" id="addrow" onclick="deleteRow('tbl${id}')"
       value="Удалить" />
   </div>`;
+}
+
+function getInputsNumberGroupHtml() {
+  return `<div class="input-group input-group-sm mb-3">
+            <input type="number" name="value" class="form-control" />
+          </div>`;
+}
+
+function getInputsDateGroupHtml() {
+  return `<div class="input-group input-group-sm mb-3">
+            <input type="date" name="date" class="form-control" />
+          </div>`;
+}
+
+function getInputsTextGroupHtml() {
+  return `<div class="input-group input-group-sm mb-3">
+            <input type="text" name="DayType.name" class="form-control" />
+          </div>`;
 }
