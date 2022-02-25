@@ -19,18 +19,16 @@ router.get('/signin', (req, res) => {
 
 router.post('/signin', showBody, async (req, res) => {
   const { email } = req.body;
-  console.log(req.body);
-  console.log(sha256(req.body.password));
   const user = await User.findOne({ where: { email } }); // ищем в бд юзера по почте
   if (!user) {
-    return res.redirect('/users/signup');
+    return res.render('signin', { message1 : 'Enter the correct data'});
   }
   if (user.password === sha256(req.body.password)) { // если шифрованный пароль из бд совпадает с зашифрованным тем что ввел юзер
     req.session.userEmail = user.email;
     req.session.userId = user.id;
-    res.redirect(`/users/profile/${user.id}`);
+    res.redirect(`/admin`);
   } else {
-    res.send(`wrong pasword`);
+    res.render('signin', { message : 'Enter the correct data'});
   }
 });
 
@@ -47,9 +45,6 @@ router.get('/logout', (req, res) => {
   res.clearCookie('userCookie');
   res.redirect('/');
 });
-
-
-
 
 
 
