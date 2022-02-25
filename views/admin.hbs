@@ -1,9 +1,9 @@
 <script src="/js/admin.js"></script>
 <div class="container-sm mt-5 indigo-900">
-  <form>
+  <form class="needs-validation" novalidate>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Категория</label>
-      <div class="input-group input-group-sm mb-3">
+      <div class="input-group input-group-sm mb-3 has-validation">
         <input type="text" class="form-control" id="inputCategory">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
           data-bs-toggle="dropdown" aria-expanded="false">
@@ -18,8 +18,8 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Тип дня</label>
-      <div class="input-group input-group-sm mb-3">
-        <input type="text" class="form-control">
+      <div class="input-group input-group-sm mb-3 has-validation">
+        <input type="text" class="form-control" id="inputTypeOfTheDay">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
           data-bs-toggle="dropdown" aria-expanded="false">
           <span class="visually-hidden">Toggle Dropdown</span>
@@ -33,11 +33,11 @@
     </div>
     <div class="mb-3">
       <label class="form-label">С даты</label>
-      <input type="date" name="date" class="form-control" />
+      <input type="date" name="date" class="form-control" id="inputFromDate" />
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Новый тариф</label>
-      <input type="number" name="value" class="form-control" />
+      <input type="number" name="value" class="form-control" id="inputTarifValue" />
     </div>
     <div class="mb-3">
       <input type="button" class="btn btn-outline-success btn-sm" id="addrow" onclick="childrenRow()"
@@ -64,6 +64,9 @@
         <td scope="row">{{id}}</td>
         <td class="align-baseline">
           <input type="text" name="PeopleType.name" class="form-control" value="{{'PeopleType.name'}}" />
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
         </td>
         <td class="align-baseline">
           <input type="text" name="DayType.name" class="form-control" value="{{'DayType.name'}}" />
@@ -74,8 +77,6 @@
         </td>
         <td class="align-baseline">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <input type=" button" class="btn btn-outline-warning btn-sm" id="addrow" onclick="changeRow('tbl{{id}}')"
-              value="Изменить" />
             <input type=" button" class="btn btn-outline-danger btn-sm" id="addrow" onclick="deleteRow('tbl{{id}}')"
               value="Удалить" />
           </div>
