@@ -1,23 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light m-10 p-10 sticky-top bg-transparent ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light m-10 p-10 sticky-top bg-transparent position-sticky">
   <div class="container-fluid ">
-    <a class="navbar-brand text-white" href="/">Домой</a>
+      <a href="/"><div class="logo"></div></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white hover" href="/users/signup">Регистрация</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white hover" href="/users/signin">Вход</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white hover" href="/users/logout">Выход</a>
-        </li>
          <li class="nav-item">
-          <a class="nav-link text-white hover" href="/animal">ТЕСТ</a>
+             <a class="nav-link text-white hover" href="/animal"><button type="button" class="btn btn-outline-warning">О ЗООПАРКЕ</button></a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link text-white hover" href="/users/logout"> <button type="button" class="btn btn-outline-warning">ТАРИФЫ</button></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white hover" href="/users/signin"><button type="button" class="btn btn-outline-warning">Вход</button></a>
         </li>
       </ul>
     </div>
