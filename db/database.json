@@ -2,7 +2,7 @@
   "development": {
     "username": "admin",
     "password": "12345",
-    "database": "Zoopark",
+    "database": "zoopark",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
